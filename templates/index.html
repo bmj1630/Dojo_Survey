@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" rel="stylesheet" href="static/css/stylesheet.css">
+    <title>Dojo_Survey</title>
+</head>
+
+<body>
+    <h1>The Dojo Survey!</h1>
+    <div></div>
+
+    <form action='/users' method='POST'>
+
+        Your Name: <input type="text" name="name"><br>
+
+        <p>Dojo Location:</p>
+
+        <select name ='locations'>
+        {% for location in locations_for_templates%}
+            <option value='{{location["id"]}}'>{{location["city"]}}, {{location["state"]}}</option>
+        {% endfor %}
+        </select>
+        <br>
+
+        <select name ='languages'>
+            {% for language in languages_for_templates%}
+                <option value='{{language["id"]}}'>{{language["language"]}}</option>
+            {% endfor %}
+            </select>
+
+        <p>Comment (optional:)</p>
+        <textarea name='comment' cols="30" rows="10"></textarea>
+        <br>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
